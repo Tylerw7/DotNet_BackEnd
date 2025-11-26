@@ -1,0 +1,6 @@
+@ecom_pwa_backend_HostAddress = http://localhost:5258
+
+GET {{ecom_pwa_backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
