@@ -15,6 +15,8 @@ var app = builder.Build();
 
 app.MapControllers();
 
+DbIntitializer.InitDb(app);
+
 app.Run();
 
 
