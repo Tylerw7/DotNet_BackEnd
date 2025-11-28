@@ -10,7 +10,7 @@ namespace ecom_pwa_backend.data
 {
     public class DbIntitializer
     {
-        public void InitDb(WebApplication app)
+        public static void InitDb(WebApplication app)
         {
             using var scope = app.Services.CreateScope();
 
@@ -20,7 +20,7 @@ namespace ecom_pwa_backend.data
             SeedData(context);
         }
 
-        private void SeedData(StoreContext context)
+        private static void SeedData(StoreContext context)
         {
             context.Database.Migrate();
 
