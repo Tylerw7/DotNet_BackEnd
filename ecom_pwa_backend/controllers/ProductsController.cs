@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ecom_pwa_backend.data;
 using ecom_pwa_backend.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ecom_pwa_backend.controllers
 {
@@ -13,15 +14,15 @@ namespace ecom_pwa_backend.controllers
     public class ProductsController(StoreContext context) : ControllerBase
     {
         [HttpGet]
-        public ActionResult<List<Product>> GetProducts()
+        public async Task<ActionResult<List<Product>>> GetProducts()
         {
-            return context.Products.ToList();
+            return await context.Products.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Product> GetProduct(int id)
+        public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            var product = context.Products.Find(id);
+            var product = await context.Products.FindAsync(id);
 
             if (product == null) return NotFound();
 
