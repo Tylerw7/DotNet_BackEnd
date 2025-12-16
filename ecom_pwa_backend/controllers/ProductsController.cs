@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using ecom_pwa_backend.data;
 using ecom_pwa_backend.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ecom_pwa_backend.controllers
 {
-    [ApiController]
-    [Route("api/[controller]")] // https://localhost:5001/api/products
-    public class ProductsController(StoreContext context) : ControllerBase
+    // https://localhost:5001/api/products
+    public class ProductsController(StoreContext context) : BaseApiController
     {
         [HttpGet]
         public async Task<ActionResult<List<Product>>> GetProducts()
