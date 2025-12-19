@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecom_pwa_backend", "ecom_pwa_backend.csproj", "{7E6F5FAB-353F-6D59-2162-75A553ED330B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E6F5FAB-353F-6D59-2162-75A553ED330B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E6F5FAB-353F-6D59-2162-75A553ED330B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E6F5FAB-353F-6D59-2162-75A553ED330B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E6F5FAB-353F-6D59-2162-75A553ED330B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1DBBDBD1-25E6-48A7-8277-F9544C6C995B}
+	EndGlobalSection
+EndGlobal
