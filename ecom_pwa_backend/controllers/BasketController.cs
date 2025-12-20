@@ -24,7 +24,7 @@ namespace ecom_pwa_backend.controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddItemToBasket(int productId, int quantity)
+        public async Task<ActionResult<BasketDtos>> AddItemToBasket(int productId, int quantity)
         {
             // get basket
             var basket = await RetrieveBasket();
@@ -43,7 +43,7 @@ namespace ecom_pwa_backend.controllers
             // save changes
             var result = await context.SaveChangesAsync() > 0;
 
-            if (result) return CreatedAtAction(nameof(GetBasket), basket);
+            if (result) return CreatedAtAction(nameof(GetBasket), basket.ToDto());
 
 
 
@@ -55,9 +55,20 @@ namespace ecom_pwa_backend.controllers
         public async Task<ActionResult> RemoveBasketItem(int productId, int quantity)
         {
             // get basket 
+            var basket = await RetrieveBasket();
+
+            if (basket == null) return BadRequest("Unable to retrieve basket");
+
             // remove the item
+
+            basket.RemoveItem(productId, quantity);
+
             //save changes
-            return Ok();
+            var result = await context.SaveChangesAsync() > 0;
+
+            if (result) return Ok();
+
+            return BadRequest("Problem updating basket");
         }
 
 
