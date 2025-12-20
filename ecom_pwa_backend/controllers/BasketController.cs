@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ecom_pwa_backend.data;
 using ecom_pwa_backend.DTOs;
 using ecom_pwa_backend.Entities;
+using ecom_pwa_backend.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,20 +20,7 @@ namespace ecom_pwa_backend.controllers
 
             if (basket == null) return NoContent();
 
-            return new BasketDtos
-            {
-                BasketId = basket.BasketId,
-                Items = basket.Items.Select(x => new BasketItemDto
-                {
-                    ProductId = x.ProductId,
-                    Name = x.Product.Name,
-                    Price = x.Product.Price,
-                    Brand = x.Product.Brand,
-                    Type = x.Product.Type,
-                    PictureUrl = x.Product.PictureUrl,
-                    Quantity = x.Quantity
-                }).ToList()
-            };
+            return basket.ToDto();
         }
 
         [HttpPost]
