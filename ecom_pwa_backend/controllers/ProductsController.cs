@@ -1,6 +1,7 @@
 
 using ecom_pwa_backend.data;
 using ecom_pwa_backend.Entities;
+using ecom_pwa_backend.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,10 +11,15 @@ namespace ecom_pwa_backend.controllers
     public class ProductsController(StoreContext context) : BaseApiController
     {
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetProducts()
+        public async Task<ActionResult<List<Product>>> GetProducts(string orderBy)
         {
-            return await context.Products.ToListAsync();
+            var query = context.Products
+                .Sort(orderBy)
+                .AsQueryable();
+
+            return await query.ToListAsync();
         }
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
