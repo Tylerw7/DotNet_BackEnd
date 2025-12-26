@@ -20,7 +20,12 @@ namespace ecom_pwa_backend.controllers
                 .Filter(productParams.Brands, productParams.Types)
                 .AsQueryable();
 
-            return await query.ToListAsync();
+            var products = await PagedList<Product>.ToPageList(query,
+            productParams.PageNumber, productParams.PageSize);
+
+            Response.AddPaginationHeader(products.Metadata);
+
+            return products;
         }
 
 
