@@ -12,7 +12,7 @@ namespace ecom_pwa_backend.controllers
     public class ProductsController(StoreContext context) : BaseApiController
     {
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetProducts([FromQuery]ProductParams productParams)
+        public async Task<ActionResult<List<Product>>> GetProducts([FromQuery] ProductParams productParams)
         {
             var query = context.Products
                 .Sort(productParams.OrderBy)
@@ -38,6 +38,17 @@ namespace ecom_pwa_backend.controllers
 
             return product;
         }
+
+
+        [HttpGet("filters")]
+        public async Task<IActionResult> GetFilters()
+        {
+            var brands = await context.Products.Select(x => x.Brand).Distinct().ToListAsync();
+            var types = await context.Products.Select(x => x.Type).Distinct().ToListAsync();
+
+            return Ok(new {brands, types });
+        }
+        
 
     }
 }
