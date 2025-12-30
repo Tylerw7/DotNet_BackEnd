@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ecom_pwa_backend.data;
 
@@ -10,9 +11,11 @@ using ecom_pwa_backend.data;
 namespace ecom_pwa_backend.data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20251230201046_IdentityAdded")]
+    partial class IdentityAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.1");
@@ -46,14 +49,14 @@ namespace ecom_pwa_backend.data.Migrations
                         new
                         {
                             Id = "2d2b0ca6-90af-4f88-8c18-9f0146a802e7",
-                            ConcurrencyStamp = "11279039-3ea9-4a41-b05b-e00b0c64c8d6",
+                            ConcurrencyStamp = "464e26bb-0004-45bf-8b6f-15b7b2295681",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = "7b0e7f5f-55cb-44d3-9a5d-bcc20e0c176c",
-                            ConcurrencyStamp = "350ae104-0012-4609-8363-d42949ee0ef3",
+                            ConcurrencyStamp = "b5c3fb10-d529-47fa-a6ac-f94c6eaf8a72",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

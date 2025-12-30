@@ -201,3 +201,4 @@
 /Users/tylerwettach/Desktop/Company Projects/Precious_Art/Full Site/DotNet_BackEnd/ecom_pwa_backend/bin/Debug/net10.0/runtimes/win-x86/native/e_sqlite3.dll
 /Users/tylerwettach/Desktop/Company Projects/Precious_Art/Full Site/DotNet_BackEnd/ecom_pwa_backend/bin/Debug/net10.0/runtimes/win/lib/net9.0/System.Windows.Extensions.dll
 /Users/tylerwettach/Desktop/Company Projects/Precious_Art/Full Site/DotNet_BackEnd/ecom_pwa_backend/obj/Debug/net10.0/ecom_pwa_backend.sourcelink.json
+/Users/tylerwettach/Desktop/Company Projects/Precious_Art/Full Site/DotNet_BackEnd/ecom_pwa_backend/bin/Debug/net10.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

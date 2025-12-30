@@ -11,7 +11,7 @@ namespace ecom_pwa_backend.data
 {
     public class DbIntitializer
     {
-        public static void InitDb(WebApplication app)
+        public static async Task InitDb(WebApplication app)
         {
             using var scope = app.Services.CreateScope();
 
@@ -21,10 +21,10 @@ namespace ecom_pwa_backend.data
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>()
                 ?? throw new InvalidOperationException("Failed to recieve user manager");    
 
-            SeedData(context, userManager);
+            await SeedData(context, userManager);
         }
 
-        private static async void SeedData(StoreContext context, UserManager<User> userManager)
+        private static async Task SeedData(StoreContext context, UserManager<User> userManager)
         {
             context.Database.Migrate();
 
@@ -45,8 +45,8 @@ namespace ecom_pwa_backend.data
                     Email = "admin@test.com"
                 };
 
-                await userManager.CreateAsync(user, "Pa$$w0rd");
-                await userManager.AddToRolesAsync(user, ["Member", "Admin"]);
+                await userManager.CreateAsync(admin, "Pa$$w0rd");
+                await userManager.AddToRolesAsync(admin, ["Member", "Admin"]);
             }
 
 

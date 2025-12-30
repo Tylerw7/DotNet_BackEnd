@@ -3,6 +3,7 @@ using ecom_pwa_backend.Entities;
 using ecom_pwa_backend.Middleware;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,10 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<StoreContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+    opt.ConfigureWarnings(warnings =>
+    {
+        warnings.Ignore(RelationalEventId.PendingModelChangesWarning);
+    });
 });
 builder.Services.AddCors();
 
@@ -40,7 +45,7 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapGroup("api").MapIdentityApi<User>(); // api/login
 
-DbIntitializer.InitDb(app);
+await DbIntitializer.InitDb(app);
 
 app.Run();
 
