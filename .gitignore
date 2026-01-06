@@ -1,2 +1,4 @@
-# ASP.NET Core local dev settings
-appsettings.Development.json
+**/appsettings.Development.json
+**/appsettings.*.json
+.env
+
