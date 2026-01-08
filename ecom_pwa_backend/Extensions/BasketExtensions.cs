@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ecom_pwa_backend.DTOs;
 using ecom_pwa_backend.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace ecom_pwa_backend.Extensions
 {
@@ -14,6 +15,8 @@ namespace ecom_pwa_backend.Extensions
             return new BasketDtos
             {
                 BasketId = basket.BasketId,
+                ClientSecret = basket.ClientSecret,
+                PaymentIntentId = basket.PaymentIntentId,
                 Items = basket.Items.Select(x => new BasketItemDto
                 {
                     ProductId = x.ProductId,
@@ -25,6 +28,16 @@ namespace ecom_pwa_backend.Extensions
                     Quantity = x.Quantity
                 }).ToList()
             };
+        }
+
+
+        public static async Task<Basket> GetBasketWithItems(this IQueryable<Basket> query, string? basketId)
+        {
+            return await query
+                .Include(x => x.Items)
+                .ThenInclude(x => x.Product)
+                .FirstOrDefaultAsync(x => x.BasketId == basketId)
+                     ?? throw new Exception("Cannot get basket");
         }
     }
 }

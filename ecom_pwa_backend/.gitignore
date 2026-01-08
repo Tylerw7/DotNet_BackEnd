@@ -1,0 +1,15 @@
+# Environment files
+.env
+.env.*
+
+# ASP.NET Core secrets
+secrets.json
+**/secrets.json
+
+# Development config (DO NOT COMMIT)
+appsettings.Development.json
+**/appsettings.Development.json
+
+# Build output
+bin/
+obj/

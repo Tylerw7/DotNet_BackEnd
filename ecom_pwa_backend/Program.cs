@@ -1,6 +1,7 @@
 using ecom_pwa_backend.data;
 using ecom_pwa_backend.Entities;
 using ecom_pwa_backend.Middleware;
+using ecom_pwa_backend.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -20,6 +21,8 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 builder.Services.AddCors();
 
 builder.Services.AddTransient<ExceptionMiddleware>();
+
+builder.Services.AddScoped<PaymentsService>();
 
 // Identity
 builder.Services.AddIdentityApiEndpoints<User>(opt =>
