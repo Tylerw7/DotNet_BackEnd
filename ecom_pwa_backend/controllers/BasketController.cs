@@ -90,7 +90,7 @@ namespace ecom_pwa_backend.controllers
                 Expires = DateTime.UtcNow.AddDays(30)
             };
 
-            Response.Cookies.Append("BasketId", basketId, cookieOptions);
+            Response.Cookies.Append("basketId", basketId, cookieOptions);
             var basket = new Basket { BasketId = basketId };
             context.Baskets.Add(basket);
             return basket;
