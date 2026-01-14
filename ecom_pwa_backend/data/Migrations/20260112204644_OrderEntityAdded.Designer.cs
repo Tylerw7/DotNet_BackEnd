@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ecom_pwa_backend.data;
 
@@ -10,9 +11,11 @@ using ecom_pwa_backend.data;
 namespace ecom_pwa_backend.data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20260112204644_OrderEntityAdded")]
+    partial class OrderEntityAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.1");
@@ -46,14 +49,14 @@ namespace ecom_pwa_backend.data.Migrations
                         new
                         {
                             Id = "2d2b0ca6-90af-4f88-8c18-9f0146a802e7",
-                            ConcurrencyStamp = "158c6405-b963-4777-b05e-9713e5e1aaf4",
+                            ConcurrencyStamp = "91c6dc54-cb2e-4255-bf78-15573501a664",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = "7b0e7f5f-55cb-44d3-9a5d-bcc20e0c176c",
-                            ConcurrencyStamp = "b1d7625a-9e47-43f5-8fa9-86b77040253a",
+                            ConcurrencyStamp = "6913597d-31e4-4515-bfd1-8574a68178eb",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -268,7 +271,6 @@ namespace ecom_pwa_backend.data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("PaymentIntentId")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<long>("Subtotal")
@@ -484,7 +486,7 @@ namespace ecom_pwa_backend.data.Migrations
                             b1.Property<int>("OrderId")
                                 .HasColumnType("INTEGER");
 
-                            b1.Property<string>("Brand")
+                            b1.Property<string>("Brans")
                                 .IsRequired()
                                 .HasColumnType("TEXT");
 
